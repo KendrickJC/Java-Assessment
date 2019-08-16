@@ -13,9 +13,13 @@ public class Assessment {
 	public String multChar(String input) {
 		String word = "";
 		for (int i = 0; i< input.length(); i++) {
-			word += input.substring(i, i+1);
-			word += input.substring(i, i+1);
-			word += input.substring(i, i+1);
+			for(int j=1;j<=3;j++) {
+				word += input.substring(i,i+1);
+			}
+			
+			//word += input.substring(i, i+1);
+			//word += input.substring(i, i+1);
+			//word += input.substring(i, i+1);
 		}
 		return word;
 	}
@@ -47,7 +51,22 @@ public class Assessment {
 	// evenlySpaced(4, 60, 9) ==> false
 
 	public boolean evenlySpaced(int a, int b, int c) {
-		return false;
+		
+		boolean output;
+		//int BtoA, BtoC;
+		
+		int AtoB,AtoC,BtoC;
+		
+		AtoB = Math.abs(b-a);
+		BtoC = Math.abs(b-c);
+		AtoC = Math.abs(c-a);
+		
+		if((AtoB == BtoC) || (BtoC == AtoC)||(AtoC == AtoB)) {
+			output = true;
+		}else {
+			output = false;
+		}
+		return output;
 	}
 
 	// Given a string and an int n, return a string that removes n letters from the 'middle' of the string.
@@ -58,6 +77,11 @@ public class Assessment {
 	// nMid("Chocolate", 1) ==> "Choclate"
 
 	public String nMid(String input, int a) {
+		
+		for(int i=0;i<input.length();i++) {
+			
+		}
+		
 		return "";
 	}
 
@@ -70,7 +94,39 @@ public class Assessment {
 	// superBlock("") ==> 0
 
 	public int superBlock(String input) {
-		return -1;
+		int block=0;
+		int newBlock = 0;
+		
+		//int count = 1;
+		for (int i = 0; i< input.length()-1; i++) {
+			
+			if(input.substring(0,1)=="") {
+				return 0;
+			}
+			else if(newBlock==block) {
+				if(input.charAt(i)==input.charAt(i+1)) {
+					block+=1;
+				}
+			}else {
+				if(input.charAt(i)==input.charAt(i+1)) {
+					newBlock+=1;
+					
+				}
+			}
+			
+			//System.out.println(input.charAt(i));
+			//System.out.println(block);
+			//System.out.println("New block: "+newBlock);
+			 
+		}
+		if(newBlock>block) {
+			block=newBlock-block;
+			//newBlock = 0;
+		}
+		
+		
+		
+		return block;
 
 	}
 	
@@ -82,7 +138,16 @@ public class Assessment {
 	//amISearch("I have been in Amsterdam") ==> 0
 
 	public int amISearch(String arg1) {
-		return -1;
+		int count = 0;
+		for(int i=0; i<arg1.length()-2;i++) {
+			if(arg1.substring(i,i+2)=="Am "|| arg1.substring(i,i+2)=="am ") {
+								
+				count+=1;
+				//System.out.println(arg1);
+				//System.out.println(count);
+			}
+		}
+		return count;
 		
 	}
 	
@@ -96,7 +161,15 @@ public class Assessment {
 	//fizzBuzz(15) ==> "fizzbuzz"
 	
 	public String fizzBuzz(int arg1) {
-		return null;
+		String output = null;
+		if((arg1%3==0)&&(arg1%5==0)){
+			output = "fizzbuzz";
+		}else if(arg1%3==0) {
+			output = "fizz";
+		}else if (arg1%5==0) {
+			output = "buzz";
+		}
+		return output;
 		
 	}
 	
@@ -115,6 +188,23 @@ public class Assessment {
 	//largest("555 72 86 45 10") ==> 15
 	
 	public int largest(String arg1) {
-		return -1;
+		int total = 0;
+		int newTotal = total;
+		for(int i=0;i<arg1.length()-1;i++) {
+			if(arg1.substring(i,i+1) != " ") {
+				//while(arg1.substring(i,i+1)!= " ") {
+				//if(i==arg1.length() -1) {
+					//return newTotal;
+				//}
+				total = arg1.charAt(i) + arg1.charAt(i+1);
+				if(total>newTotal) {
+					newTotal=total;
+				}
+				//}
+
+			}
+		}
+		
+		return newTotal;
 	}
 }
