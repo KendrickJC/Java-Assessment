@@ -138,15 +138,17 @@ public class Assessment {
 	//amISearch("I have been in Amsterdam") ==> 0
 
 	public int amISearch(String arg1) {
-		int count = 0;
-		for(int i=0; i<arg1.length()-2;i++) {
-			if(arg1.substring(i,i+2)=="Am "|| arg1.substring(i,i+2)=="am ") {
-								
-				count+=1;
-				//System.out.println(arg1);
-				//System.out.println(count);
-			}
-		}
+		
+		String a[] = arg1.split(" "); 
+		  
+		int count = 0; 
+		for (int i = 0; i < a.length; i++)  
+		{  
+			if ("am".equals(a[i])|| ("Am".equals(a[i]))){
+				count++; 
+			} 
+
+		} 
 		return count;
 		
 	}
